@@ -1,0 +1,34 @@
+{
+  "name": "@rrdawlx/mock-server",
+  "version": "1.0.0",
+  "description": "mock server for frontend development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "bin": {
+    "mock": "./bin/run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RRDAWLX/mock-server.git"
+  },
+  "keywords": [
+    "mock",
+    "server",
+    "frontend"
+  ],
+  "author": "rrdawlx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RRDAWLX/mock-server/issues"
+  },
+  "homepage": "https://github.com/RRDAWLX/mock-server#readme",
+  "devDependencies": {
+    "express": "^4.16.3"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1"
+  }
+}

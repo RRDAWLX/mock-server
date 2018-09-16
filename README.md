@@ -1,2 +1,2 @@
 # mock-server
-mock server for front-end development
+mock server for frontend development
