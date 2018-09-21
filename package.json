@@ -29,6 +29,7 @@
     "express": "^4.16.3"
   },
   "dependencies": {
-    "chalk": "^2.4.1"
+    "chalk": "^2.4.1",
+    "commander": "^2.18.0"
   }
 }
