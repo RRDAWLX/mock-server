@@ -7,7 +7,7 @@ const Server = require('../lib/server'),
   chalk = require('chalk')
 
 program.version(pkg.version, '-v, --version')
-  .option('--port <port>', 'mock 服务器要监听的端口。', Number, 9999)
+  .option('--port <port>', 'mock 服务器要监听的端口。', Number, 9999)   // 9 is a lucky number
   .option('--base-dir <path>', 'api 请求的挂载目录，也就是 mock 数据文件的根目录，默认为当前执行命令的目录。')
   .option('--map-file <path>', 'api 映射文件。')
   .parse(process.argv)
