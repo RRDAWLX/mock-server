@@ -2,13 +2,13 @@
   "name": "@rrdawlx/mock-server",
   "version": "1.0.0",
   "description": "mock server for frontend development",
-  "main": "bin/run.js",
+  "main": "bin/mock.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bin/run.js"
+    "start": "node bin/mock.js"
   },
   "bin": {
-    "mock": "./bin/run.js"
+    "mock": "./bin/mock.js"
   },
   "repository": {
     "type": "git",
