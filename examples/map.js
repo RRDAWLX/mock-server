@@ -1,5 +1,6 @@
 const path = require('path')
 
 module.exports = [
-  ['/mapapi', path.join(__dirname, './mock-files/object.js')],
+  // ['/request/path', '/mock/file/path']
+  ['/map/api', path.join(__dirname, './mock-files/object.js')],
 ]
