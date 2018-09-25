@@ -2,13 +2,13 @@
 用于前端开发的 mock 服务器
 
 # 安装
-``` 
-// 没办法，mock-server 以经被占了，我也想不到其他好名字 
-npm install @rrdawlx/mock-server 
+```
+// 没办法，mock-server 以经被占了，我也想不到其他好名字
+npm install @rrdawlx/mock-server
 ```
 
 # 使用
-``` 
+```
 Usage: mock [options]
 
 Options:
@@ -32,9 +32,10 @@ const path = require('path')
 module.exports = [
   // ['/request/path', '/mock/file/path']
   ['/map/api', path.join(__dirname, './mock-files/object.js')],
+  ['/restful/:param', path.join(__dirname, './mock-files/restful.js')],
 ]
 ```
-map-file 的形式是一个 node 模块，返回值是一个数组，其中的每一项又是数组，代表一个 api 的映射。每个映射数组的第一项是 api 的请求路径，第二项是 mock 数据文件的路径。
+map-file 的形式是一个 node 模块，返回值是一个数组，其中的每一项又是数组，代表一个 api 的映射。每个映射数组的第一项是 api 的请求路径，支持 restful 风格的路径；第二项是 mock 数据文件的**绝对路径**。
 
 # mock 数据
 mock 数据的例子可以查看项目仓库中的 examples/mock-files 文件夹。
@@ -58,7 +59,15 @@ module.exports = function (req) {
   }
 }
 ```
-函数有一个参数 req，是 express 的请求对象，具体信息可以查看 express 的 [request 对象文档](http://www.expressjs.com.cn/4x/api.html#req)。  
+函数有一个参数 req，是 express 的请求对象，具体信息可以查看 express 的 [request 对象文档](http://www.expressjs.com.cn/4x/api.html#req)。当在 map-file 中配置了 restful 风格的路径，可以在 req.params 对象中读取相关的路径参数，例如 examples/mock-files/restful.js :
+```
+// map-file 中的配置：
+// ['/restful/:param', path.join(__dirname, './mock-files/restful.js')]
+
+module.exports = function(req) => {
+  return {msg: `this is a restful api, param = ${req.params.param}`}
+}
+```
 函数的返回值可以是一个简单对象，就像上面的例子，也可以是一个 promise 对象，例如 examples/mock-files/promise.js ：
 ```
 module.exports = function() {
