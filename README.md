@@ -81,7 +81,7 @@ module.exports = function() {
 }
 ```
 在上面的例子中，服务器将会在 1 秒钟后响应请求。  
-如果返回的 promise 对象最终变成了 rejected 状态，则服务器会响应内部错误（5XX），如 examples/mock-files/error/reject.js ：
+如果返回的 promise 对象最终变成了 rejected 状态，则会返回 4XX、5XX 状态码的错误，如 examples/mock-files/error/reject.js ：
 ```
 module.exports = function() {
   return new Promise((resolve, reject) => {
