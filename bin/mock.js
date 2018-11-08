@@ -31,12 +31,17 @@ if (program.https) {
   }
 }
 
-Server(program.port, baseDir, apiMapFile, httpsOpts)
+Server({
+  port:program.port,
+  baseDir,
+  apiMapFile,
+  httpsOpts
+})
 
 // https://nodejs.org/api/process.html#process_signal_events
 process.on('SIGINT', () => {
   console.log()
-  console.log(chalk.blue(`Mock server at ${httpsOpts ? 'https' : 'http'}://localhost:${program.port} closed`))
+  console.log(chalk.blue(`mock server at ${httpsOpts ? 'https' : 'http'}://localhost:${program.port} closed`))
   // 直接退出进程，而不在 server.close() 的回调中退出，是因为服务器关闭需要很长时间。
   process.exit()
 })
