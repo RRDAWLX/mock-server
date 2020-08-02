@@ -3,7 +3,6 @@
 
 # 安装
 ```
-// 没办法，mock-server 以经被占了，我也想不到其他好名字
 npm install @rrdawlx/mock-server
 ```
 
