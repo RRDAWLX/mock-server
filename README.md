@@ -21,6 +21,9 @@ Options:
   --https-options <path>  https options 配置文件，格式要求是个 node 模块，返回值是一个对象。
   -h, --help              output usage information
 ```
+# 原理
+<img src="./aseets/mechanism.drawio.svg" style="display: block; margin: auto;" />
+
 服务器接到请求后，首先会在 map-file 中寻找对应的 mock 数据文件，如果没有匹配的映射，则会在 base-dir 中根据请求路径寻找具有相同路径的 .js 或 .json 文件。例如，请求路径是 ```/a/b/c```，则会先去寻找 ```base-dir/a/b/c.js```，如果没找到就再去找```base-dir/a/b/c.json```（实际上的寻找逻辑是 [node 的模块寻找逻辑](https://nodejs.org/dist/latest-v10.x/docs/api/modules.html#modules_all_together)，但为了简单和统一规范，我们在此就错误地理解为只去 base-dir 中寻找具有相同路径的 .js 或 .json 文件）。如果最终没有找到相应的 mock 数据文件，则会响应 404。  
 map-file 和 mock 数据文件修改后无需重启服务器就可响应最新数据。
 
